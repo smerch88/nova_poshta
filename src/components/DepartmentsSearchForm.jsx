@@ -25,7 +25,7 @@ export const DepartmentsSearchForm = () => {
     validationSchema: validationSchema,
     onSubmit: values => {
       const body = {
-        apiKey: '8d677609f6e47cdse83929374b3afab572',
+        apiKey: '8d677609f6e47ce83929374b3afab572',
         modelName: 'Address',
         calledMethod: 'getWarehouses',
         methodProperties: {
