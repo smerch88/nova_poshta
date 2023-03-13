@@ -1,7 +1,8 @@
-/* eslint-disable no-unused-vars */
 import { Box, Button, CircularProgress, TextField } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
+
+import { useEffect } from 'react';
 
 import { getIsLoading } from 'redux/departments/departments-selectors';
 import { fetchTnn } from 'redux/tnn/tnn-operations';
@@ -10,19 +11,31 @@ import { saveTnn } from 'redux/tnn/tnn-slice';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { getQueryTnn } from 'redux/tnn/tnn-selectors';
 
 const validationSchema = yup.object({
-  tnn: yup.string('Enter Name to Search').required('Name is Required'),
+  tnn: yup
+    .string()
+    .matches(/^[0-9]{14}$/, 'TTN number must be exactly 14 digits long')
+    .required('TTN number is required'),
 });
 
 export const TnnSearchForm = () => {
   const dispatch = useDispatch();
 
+  const queryTnn = useSelector(getQueryTnn);
   const isLoading = useSelector(getIsLoading);
+
+  useEffect(() => {
+    formik.setFieldValue('tnn', queryTnn);
+    formik.setValues({ tnn: queryTnn });
+    formik.submitForm();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queryTnn]);
 
   const formik = useFormik({
     initialValues: {
-      tnn: '20450676599509',
+      tnn: queryTnn,
     },
     validationSchema: validationSchema,
     onSubmit: values => {

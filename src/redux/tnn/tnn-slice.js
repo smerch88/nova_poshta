@@ -4,6 +4,7 @@ import { fetchTnn } from './tnn-operations';
 const initialState = {
   tnn: [],
   tnnList: [],
+  queryTnn: '',
   isLoading: false,
   error: null,
 };
@@ -16,6 +17,9 @@ const tnnSlice = createSlice({
       if (!state.tnnList.some(tnn => tnn === action.payload)) {
         state.tnnList = [...state.tnnList, action.payload];
       }
+    },
+    setQueryTnn: (state, action) => {
+      state.queryTnn = action.payload;
     },
   },
   extraReducers: builder => {
@@ -36,5 +40,6 @@ const tnnSlice = createSlice({
 });
 
 export const { saveTnn } = tnnSlice.actions;
+export const { setQueryTnn } = tnnSlice.actions;
 
 export const tnnReducer = tnnSlice.reducer;
