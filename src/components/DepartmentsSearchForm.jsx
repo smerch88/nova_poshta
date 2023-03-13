@@ -55,8 +55,6 @@ export const DepartmentsSearchForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  console.log('page', page);
-
   return (
     <>
       <Box
@@ -65,6 +63,7 @@ export const DepartmentsSearchForm = () => {
         sx={{
           gap: 1,
         }}
+        mt={2}
       >
         <TextField
           mb={1}

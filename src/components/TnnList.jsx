@@ -1,3 +1,4 @@
+import { Button, Divider, List, ListItem, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getTnn, getError, getTnnList } from 'redux/tnn/tnn-selectors';
@@ -31,31 +32,40 @@ export const TnnList = () => {
     <>
       {error && `Something went wrong: ${error}`}
       {errors && errors[0]}
-      <ul>
+      <List>
         {!error &&
           data &&
           data.map(document => (
-            <li key={document.Number}>
-              <p>Статус доставки: {document.Status}</p>
-              <p>Відправлено: {document.WarehouseSender}</p>
-              <p>Отримано:{document.WarehouseRecipient}</p>
-            </li>
+            <ListItem key={document.Number}>
+              <Typography component="div" sx={{ width: '100%' }}>
+                Статус доставки: {document.Status}
+              </Typography>
+              <Divider />
+              <Typography component="div" sx={{ width: '100%' }}>
+                Відправлено: {document.WarehouseSender}
+              </Typography>
+              <Divider />
+              <Typography component="div" sx={{ width: '100%' }}>
+                Отримано: {document.WarehouseRecipient}
+              </Typography>
+            </ListItem>
           ))}
-      </ul>
-      <ul>
+      </List>
+
+      <List>
         {tnnListData &&
           tnnListData.map(tnn => (
-            <li key={tnn} data-tnn={tnn}>
-              <p data-tnn={tnn} onClick={onTnnListClickHandler}>
+            <ListItem key={tnn} data-tnn={tnn}>
+              <Typography data-tnn={tnn} onClick={onTnnListClickHandler}>
                 {tnn}
-              </p>
-              <button data-tnn={tnn} onClick={onTnnDeleteClickHandler}>
+              </Typography>
+              <Button data-tnn={tnn} onClick={onTnnDeleteClickHandler}>
                 delete
-              </button>
-            </li>
+              </Button>
+            </ListItem>
           ))}
-      </ul>
-      <button onClick={onAllTnnDeleteClickHandler}>clear all</button>
+      </List>
+      <Button onClick={onAllTnnDeleteClickHandler}>clear all</Button>
     </>
   );
 };

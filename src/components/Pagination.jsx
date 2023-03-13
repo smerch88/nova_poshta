@@ -1,3 +1,5 @@
+import { Button, Typography } from '@mui/material';
+
 import { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
@@ -25,11 +27,13 @@ export const Pagination = () => {
 
   return (
     <>
-      <button onClick={onClickPrevHandler} disabled={page < 2 ? true : false}>
+      <Button onClick={onClickPrevHandler} disabled={page < 2 ? true : false}>
         Prev Page
-      </button>
-      <span>{page}</span>
-      <button onClick={onClickNexthandler}>Next Page</button>
+      </Button>
+      <Typography component="span" mr={1} ml={1}>
+        {page}
+      </Typography>
+      <Button onClick={onClickNexthandler}>Next Page</Button>
     </>
   );
 };
