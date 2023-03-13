@@ -4,7 +4,7 @@ import { Box, Button, CircularProgress, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getIsLoading } from 'redux/departments/departments-selectors';
-import { fetchDepartments } from 'redux/departments/departments-operations';
+import { fetchTnn } from 'redux/tnn/tnn-operations';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -38,7 +38,7 @@ export const TnnSearchForm = () => {
         },
       };
 
-      dispatch(fetchDepartments(body));
+      dispatch(fetchTnn(body));
     },
   });
 
