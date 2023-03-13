@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/nova-poshta/static/js/main.f16fe5cf.js",
+    "main.js": "/nova-poshta/static/js/main.0e03dd69.js",
     "static/js/614.6bfd694a.chunk.js": "/nova-poshta/static/js/614.6bfd694a.chunk.js",
-    "static/js/774.6ada8882.chunk.js": "/nova-poshta/static/js/774.6ada8882.chunk.js",
+    "static/js/774.01988bd5.chunk.js": "/nova-poshta/static/js/774.01988bd5.chunk.js",
     "static/js/759.61101855.chunk.js": "/nova-poshta/static/js/759.61101855.chunk.js",
     "index.html": "/nova-poshta/index.html",
-    "main.f16fe5cf.js.map": "/nova-poshta/static/js/main.f16fe5cf.js.map",
+    "main.0e03dd69.js.map": "/nova-poshta/static/js/main.0e03dd69.js.map",
     "614.6bfd694a.chunk.js.map": "/nova-poshta/static/js/614.6bfd694a.chunk.js.map",
-    "774.6ada8882.chunk.js.map": "/nova-poshta/static/js/774.6ada8882.chunk.js.map",
+    "774.01988bd5.chunk.js.map": "/nova-poshta/static/js/774.01988bd5.chunk.js.map",
     "759.61101855.chunk.js.map": "/nova-poshta/static/js/759.61101855.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.f16fe5cf.js"
+    "static/js/main.0e03dd69.js"
   ]
 }
