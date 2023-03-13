@@ -17,7 +17,9 @@ export const DepartmentsList = () => {
       <ul>
         {data &&
           data.map(department => (
-            <li key={department.SiteKey}>{department.ShortAddress}</li>
+            <li key={department.SiteKey}>
+              <p>{department.Description}</p>
+            </li>
           ))}
       </ul>
     </>
