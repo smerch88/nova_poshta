@@ -16,6 +16,8 @@ export const Pagination = () => {
     setPage(page + 1);
   };
 
+  console.log(page);
+
   useEffect(() => {
     dispatch(setPageNumber(page));
     // eslint-disable-next-line react-hooks/exhaustive-deps

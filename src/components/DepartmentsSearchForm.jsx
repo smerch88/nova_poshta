@@ -26,13 +26,11 @@ export const DepartmentsSearchForm = () => {
 
   useEffect(() => {
     setPage(currentPage);
-    formik.submitForm();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   const formik = useFormik({
     initialValues: {
-      query: '',
+      query: 'київ',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
@@ -51,6 +49,13 @@ export const DepartmentsSearchForm = () => {
       dispatch(fetchDepartments(body));
     },
   });
+
+  useEffect(() => {
+    formik.submitForm();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
+
+  console.log('page', page);
 
   return (
     <>
