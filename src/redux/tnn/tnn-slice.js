@@ -3,6 +3,7 @@ import { fetchTnn } from './tnn-operations';
 
 const initialState = {
   tnn: [],
+  tnnList: [],
   isLoading: false,
   error: null,
 };
@@ -10,6 +11,13 @@ const initialState = {
 const tnnSlice = createSlice({
   name: 'tnn',
   initialState: initialState,
+  reducers: {
+    saveTnn: (state, action) => {
+      if (!state.tnnList.some(tnn => tnn === action.payload)) {
+        state.tnnList = [...state.tnnList, action.payload];
+      }
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchTnn.pending, state => {
@@ -26,5 +34,7 @@ const tnnSlice = createSlice({
       });
   },
 });
+
+export const { saveTnn } = tnnSlice.actions;
 
 export const tnnReducer = tnnSlice.reducer;

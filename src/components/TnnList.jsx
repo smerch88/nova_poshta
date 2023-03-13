@@ -1,14 +1,15 @@
 import { useSelector } from 'react-redux';
 
-import {
-  getDepartments,
-  getError,
-} from 'redux/departments/departments-selectors';
+import { getTnn, getError, getTnnList } from 'redux/tnn/tnn-selectors';
 
 export const TnnList = () => {
-  const departmentsData = useSelector(getDepartments);
+  const tnnData = useSelector(getTnn);
+  const tnnListData = useSelector(getTnnList);
+
+  console.log('tnnListData', tnnListData);
+
   const error = useSelector(getError);
-  const { data, errors } = departmentsData;
+  const { data, errors } = tnnData;
 
   return (
     <>
@@ -24,7 +25,7 @@ export const TnnList = () => {
             </li>
           ))}
       </ul>
-      <ul></ul>
+      <ul>{tnnListData && tnnListData.map(tnn => <li key={tnn}>{tnn}</li>)}</ul>
     </>
   );
 };
