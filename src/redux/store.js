@@ -11,17 +11,31 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { departmentsReducer } from './departments/departments-slice';
+import { tnnReducer } from './tnn/tnn-slice';
 
-const persistConfig = {
+const departmentsPersistConfig = {
   key: 'departments',
   blacklist: [''],
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, departmentsReducer);
+const tnnPersistConfig = {
+  key: 'tnn',
+  blacklist: [''],
+  storage,
+};
+
+const persistedReducer = persistReducer(
+  departmentsPersistConfig,
+  departmentsReducer
+);
+const persistedTnnReducer = persistReducer(tnnPersistConfig, tnnReducer);
 
 export const store = configureStore({
-  reducer: { departments: persistedReducer },
+  reducer: {
+    departments: persistedReducer,
+    tnn: persistedTnnReducer,
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
