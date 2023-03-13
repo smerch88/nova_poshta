@@ -2,7 +2,7 @@
   "name": "nova-poshta",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://smerch88.github.io/nova-poshta/",
+  "homepage": "https://smerch88.github.io/nova_poshta/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
