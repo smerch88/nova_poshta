@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/nova_poshta/static/js/main.8eca37ee.js",
+    "main.js": "/nova_poshta/static/js/main.d6a51d2c.js",
     "static/js/188.524a777e.chunk.js": "/nova_poshta/static/js/188.524a777e.chunk.js",
-    "static/js/697.79882c55.chunk.js": "/nova_poshta/static/js/697.79882c55.chunk.js",
+    "static/js/697.5b1bf4d4.chunk.js": "/nova_poshta/static/js/697.5b1bf4d4.chunk.js",
     "static/js/321.f689d7d3.chunk.js": "/nova_poshta/static/js/321.f689d7d3.chunk.js",
     "index.html": "/nova_poshta/index.html",
-    "main.8eca37ee.js.map": "/nova_poshta/static/js/main.8eca37ee.js.map",
+    "main.d6a51d2c.js.map": "/nova_poshta/static/js/main.d6a51d2c.js.map",
     "188.524a777e.chunk.js.map": "/nova_poshta/static/js/188.524a777e.chunk.js.map",
-    "697.79882c55.chunk.js.map": "/nova_poshta/static/js/697.79882c55.chunk.js.map",
+    "697.5b1bf4d4.chunk.js.map": "/nova_poshta/static/js/697.5b1bf4d4.chunk.js.map",
     "321.f689d7d3.chunk.js.map": "/nova_poshta/static/js/321.f689d7d3.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.8eca37ee.js"
+    "static/js/main.d6a51d2c.js"
   ]
 }
