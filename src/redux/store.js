@@ -13,7 +13,7 @@ import {
 import { departmentsReducer } from './departments/departments-slice';
 
 const persistConfig = {
-  key: 'repos',
+  key: 'departments',
   blacklist: [''],
   storage,
 };
@@ -21,7 +21,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, departmentsReducer);
 
 export const store = configureStore({
-  reducer: { repos: persistedReducer },
+  reducer: { departments: persistedReducer },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
