@@ -17,8 +17,8 @@ export const TnnList = () => {
   };
 
   const onTnnDeleteClickHandler = event => {
-    console.log(event.target.dataset.tnn);
     dispatch(deleteQueryTnn(event.target.dataset.tnn));
+    dispatch(setQueryTnn(''));
   };
 
   return (
@@ -43,9 +43,9 @@ export const TnnList = () => {
               <p data-tnn={tnn} onClick={onTnnListClickHandler}>
                 {tnn}
               </p>
-              <p data-tnn={tnn} onClick={onTnnDeleteClickHandler}>
+              <button data-tnn={tnn} onClick={onTnnDeleteClickHandler}>
                 delete
-              </p>
+              </button>
             </li>
           ))}
       </ul>

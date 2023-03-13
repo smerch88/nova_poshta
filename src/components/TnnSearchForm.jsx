@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { getIsLoading } from 'redux/departments/departments-selectors';
 import { fetchTnn } from 'redux/tnn/tnn-operations';
 
-// import { saveTnn } from 'redux/tnn/tnn-slice';
+import { saveTnn } from 'redux/tnn/tnn-slice';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -27,6 +27,9 @@ export const TnnSearchForm = () => {
   const isLoading = useSelector(getIsLoading);
 
   useEffect(() => {
+    if (!queryTnn) {
+      return;
+    }
     formik.setFieldValue('tnn', queryTnn);
     formik.setValues({ tnn: queryTnn });
     formik.submitForm();
@@ -54,7 +57,7 @@ export const TnnSearchForm = () => {
       };
 
       dispatch(fetchTnn(body));
-      // dispatch(saveTnn(values.tnn));
+      dispatch(saveTnn(values.tnn));
     },
   });
 
