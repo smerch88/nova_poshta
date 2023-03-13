@@ -22,7 +22,13 @@ const tnnSlice = createSlice({
       state.queryTnn = action.payload;
     },
     deleteQueryTnn: (state, action) => {
+      state.queryTnn = '';
       state.tnnList = state.tnnList.filter(tnn => tnn !== action.payload);
+    },
+    deleteAllSavedTnn: state => {
+      state.tnnList = [];
+      state.queryTnn = '';
+      state.tnnList = [];
     },
   },
   extraReducers: builder => {
@@ -45,5 +51,6 @@ const tnnSlice = createSlice({
 export const { saveTnn } = tnnSlice.actions;
 export const { setQueryTnn } = tnnSlice.actions;
 export const { deleteQueryTnn } = tnnSlice.actions;
+export const { deleteAllSavedTnn } = tnnSlice.actions;
 
 export const tnnReducer = tnnSlice.reducer;

@@ -1,7 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getTnn, getError, getTnnList } from 'redux/tnn/tnn-selectors';
-import { deleteQueryTnn, setQueryTnn } from 'redux/tnn/tnn-slice';
+import {
+  deleteAllSavedTnn,
+  deleteQueryTnn,
+  setQueryTnn,
+} from 'redux/tnn/tnn-slice';
 
 export const TnnList = () => {
   const tnnData = useSelector(getTnn);
@@ -18,7 +22,9 @@ export const TnnList = () => {
 
   const onTnnDeleteClickHandler = event => {
     dispatch(deleteQueryTnn(event.target.dataset.tnn));
-    dispatch(setQueryTnn(''));
+  };
+  const onAllTnnDeleteClickHandler = event => {
+    dispatch(deleteAllSavedTnn());
   };
 
   return (
@@ -49,6 +55,7 @@ export const TnnList = () => {
             </li>
           ))}
       </ul>
+      <button onClick={onAllTnnDeleteClickHandler}>clear all</button>
     </>
   );
 };
