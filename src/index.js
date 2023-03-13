@@ -8,7 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <BrowserRouter basename="nova-poshta">
+    <BrowserRouter basename="nova_poshta">
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
