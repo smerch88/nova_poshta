@@ -4,17 +4,15 @@ export const novaPoshtaApi = axios.create({
   baseURL: 'https://api.novaposhta.ua/v2.0/json/',
 });
 
-export const getRepos = async body => {
+export const getData = async body => {
   try {
-    console.log('body', body);
     const { data, status } = await novaPoshtaApi.post(``, body);
-    console.log('data', data);
-    console.log('status', status);
     if (status !== 200) {
-      throw new Error(`Failed to fetch repository data: ${status}`);
+      throw new Error(`Failed to fetch data: ${status}`);
     }
     return data;
   } catch (error) {
+    alert(error.message);
     return error;
   }
 };
