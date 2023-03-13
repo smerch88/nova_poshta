@@ -23,6 +23,8 @@ export const TnnList = () => {
   const tnnData = useSelector(getTnn);
   const tnnListData = useSelector(getTnnList);
 
+  console.log(tnnListData);
+
   const error = useSelector(getError);
   const dispatch = useDispatch();
 
@@ -106,9 +108,11 @@ export const TnnList = () => {
             ))}
         </Grid>
       </List>
-      <Button onClick={onAllTnnDeleteClickHandler} fullWidth>
-        видвлити все
-      </Button>
+      {tnnListData.length !== 0 && (
+        <Button onClick={onAllTnnDeleteClickHandler} fullWidth>
+          видалити все
+        </Button>
+      )}
     </>
   );
 };
