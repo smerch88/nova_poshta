@@ -1,5 +1,13 @@
+import { DepartmentsList } from 'components/DepartmentsList';
+import { DepartmentsSearchForm } from 'components/DepartmentsSearchForm';
+
 const Departments = () => {
-  return <>Deps</>;
+  return (
+    <>
+      <DepartmentsSearchForm />
+      <DepartmentsList />
+    </>
+  );
 };
 
 export default Departments;
