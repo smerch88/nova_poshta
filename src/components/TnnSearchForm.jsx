@@ -4,20 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useEffect } from 'react';
 
-import { getIsLoading } from 'redux/departments/departments-selectors';
 import { fetchTnn } from 'redux/tnn/tnn-operations';
 
 import { saveTnn } from 'redux/tnn/tnn-slice';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { getQueryTnn } from 'redux/tnn/tnn-selectors';
+import { getIsLoading, getQueryTnn } from 'redux/tnn/tnn-selectors';
 
 const validationSchema = yup.object({
   tnn: yup
     .string()
-    .matches(/^[0-9]{14}$/, 'TTN number must be exactly 14 digits long')
-    .required('TTN number is required'),
+    .matches(/^[0-9]{14}$/, 'ТТН має мати довжину 14 цифр')
+    .required('ТТН не введено'),
 });
 
 export const TnnSearchForm = () => {
@@ -76,7 +75,7 @@ export const TnnSearchForm = () => {
           fullWidth
           id="tnn"
           name="tnn"
-          label="Enter TNN"
+          label="Введіть ТТН"
           value={formik.values.tnn}
           onChange={formik.handleChange}
           error={formik.touched.tnn && Boolean(formik.errors.tnn)}
@@ -90,7 +89,7 @@ export const TnnSearchForm = () => {
           disabled={isLoading}
           type="submit"
         >
-          {isLoading ? <CircularProgress size={24} /> : 'Search'}
+          {isLoading ? <CircularProgress size={24} /> : 'Шукати'}
         </Button>
       </Box>
     </>

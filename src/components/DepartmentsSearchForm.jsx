@@ -13,7 +13,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 const validationSchema = yup.object({
-  query: yup.string('Enter Name to Search').required('Name is Required'),
+  query: yup.string('Введіть назву для пошуку').required(`Назва обов'язкова`),
 });
 
 export const DepartmentsSearchForm = () => {
@@ -70,7 +70,7 @@ export const DepartmentsSearchForm = () => {
           fullWidth
           id="query"
           name="query"
-          label="What do you want to find?"
+          label="Введіть назву населенного пункту"
           value={formik.values.query}
           onChange={formik.handleChange}
           error={formik.touched.query && Boolean(formik.errors.query)}
@@ -84,7 +84,7 @@ export const DepartmentsSearchForm = () => {
           disabled={isLoading}
           type="submit"
         >
-          {isLoading ? <CircularProgress size={24} /> : 'Search'}
+          {isLoading ? <CircularProgress size={24} /> : 'Шукати'}
         </Button>
       </Box>
     </>

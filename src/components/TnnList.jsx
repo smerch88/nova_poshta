@@ -12,12 +12,7 @@ import {
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  getTnn,
-  getError,
-  getTnnList,
-  getIsLoading,
-} from 'redux/tnn/tnn-selectors';
+import { getTnn, getError, getTnnList } from 'redux/tnn/tnn-selectors';
 import {
   deleteAllSavedTnn,
   deleteQueryTnn,
@@ -27,7 +22,6 @@ import {
 export const TnnList = () => {
   const tnnData = useSelector(getTnn);
   const tnnListData = useSelector(getTnnList);
-  const isLoading = useSelector(getIsLoading);
 
   const error = useSelector(getError);
   const dispatch = useDispatch();
@@ -47,7 +41,6 @@ export const TnnList = () => {
 
   return (
     <>
-      {isLoading && `isLoading`}
       {error && `Something went wrong: ${error}`}
       {errors && errors[0]}
       <List>
@@ -104,7 +97,7 @@ export const TnnList = () => {
                         data-tnn={tnn}
                         onClick={onTnnDeleteClickHandler}
                       >
-                        delete
+                        видалити
                       </Button>
                     </CardActions>
                   </Card>
@@ -114,7 +107,7 @@ export const TnnList = () => {
         </Grid>
       </List>
       <Button onClick={onAllTnnDeleteClickHandler} fullWidth>
-        clear all
+        видвлити все
       </Button>
     </>
   );

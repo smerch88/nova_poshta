@@ -34,13 +34,16 @@ export const Header = () => {
       <ListItem disablePadding>
         <ListItemButton component={Link} to="/">
           <HomeOutlinedIcon sx={{ marginRight: '40px' }} />
-          <ListItemText primary="TNN" sx={{ marginRight: '40px' }} />
+          <ListItemText primary="Пошук за ТТН" sx={{ marginRight: '40px' }} />
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding>
         <ListItemButton component={Link} to="/departments">
           <FindInPageOutlinedIcon sx={{ marginRight: '40px' }} />
-          <ListItemText primary="Departments" sx={{ marginRight: '40px' }} />
+          <ListItemText
+            primary="Пошук відділень"
+            sx={{ marginRight: '40px' }}
+          />
         </ListItemButton>
       </ListItem>
     </List>
