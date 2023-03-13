@@ -1,6 +1,23 @@
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  Typography,
+} from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getTnn, getError, getTnnList } from 'redux/tnn/tnn-selectors';
+import {
+  getTnn,
+  getError,
+  getTnnList,
+  getIsLoading,
+} from 'redux/tnn/tnn-selectors';
 import {
   deleteAllSavedTnn,
   deleteQueryTnn,
@@ -10,6 +27,7 @@ import {
 export const TnnList = () => {
   const tnnData = useSelector(getTnn);
   const tnnListData = useSelector(getTnnList);
+  const isLoading = useSelector(getIsLoading);
 
   const error = useSelector(getError);
   const dispatch = useDispatch();
@@ -29,33 +47,75 @@ export const TnnList = () => {
 
   return (
     <>
+      {isLoading && `isLoading`}
       {error && `Something went wrong: ${error}`}
       {errors && errors[0]}
-      <ul>
+      <List>
         {!error &&
           data &&
           data.map(document => (
-            <li key={document.Number}>
-              <p>Статус доставки: {document.Status}</p>
-              <p>Відправлено: {document.WarehouseSender}</p>
-              <p>Отримано:{document.WarehouseRecipient}</p>
-            </li>
+            <ListItem
+              key={document.Number}
+              sx={{
+                width: '100%',
+                height: { xs: 340, sm: 220, md: 152, lg: 160, xl: 160 },
+              }}
+            >
+              <Card sx={{ width: '100%' }}>
+                <CardContent>
+                  <Typography>Статус доставки: {document.Status}</Typography>
+                  <Divider />
+                  <Typography>
+                    Відправлено: {document.WarehouseSender}
+                  </Typography>
+                  <Divider />
+                  <Typography>
+                    Отримано: {document.WarehouseRecipient}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </ListItem>
           ))}
-      </ul>
-      <ul>
-        {tnnListData &&
-          tnnListData.map(tnn => (
-            <li key={tnn} data-tnn={tnn}>
-              <p data-tnn={tnn} onClick={onTnnListClickHandler}>
-                {tnn}
-              </p>
-              <button data-tnn={tnn} onClick={onTnnDeleteClickHandler}>
-                delete
-              </button>
-            </li>
-          ))}
-      </ul>
-      <button onClick={onAllTnnDeleteClickHandler}>clear all</button>
+      </List>
+      <List>
+        <Grid container spacing={2}>
+          {tnnListData &&
+            tnnListData.map(tnn => (
+              <Grid item xs={12} sm={6} md={4} key={tnn} data-tnn={tnn}>
+                <ListItem sx={{ minWidth: 275 }}>
+                  <Card sx={{ width: '100%' }}>
+                    <CardActionArea>
+                      <CardContent
+                        onClick={onTnnListClickHandler}
+                        data-tnn={tnn}
+                      >
+                        <Typography
+                          onClick={onTnnListClickHandler}
+                          sx={{ textAlign: 'center' }}
+                          data-tnn={tnn}
+                        >
+                          {tnn}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                      <Button
+                        fullWidth
+                        data-tnn={tnn}
+                        onClick={onTnnDeleteClickHandler}
+                      >
+                        delete
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </ListItem>
+              </Grid>
+            ))}
+        </Grid>
+      </List>
+      <Button onClick={onAllTnnDeleteClickHandler} fullWidth>
+        clear all
+      </Button>
     </>
   );
 };

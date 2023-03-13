@@ -1,7 +1,10 @@
+import { Box, Button, Typography } from '@mui/material';
+
 import { useEffect, useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { getIsLoading } from 'redux/departments/departments-selectors';
 import { setPageNumber } from 'redux/departments/departments-slice';
 
 export const Pagination = () => {
@@ -16,6 +19,8 @@ export const Pagination = () => {
     setPage(page + 1);
   };
 
+  const isLoading = useSelector(getIsLoading);
+
   useEffect(() => {
     dispatch(setPageNumber(page));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,11 +28,23 @@ export const Pagination = () => {
 
   return (
     <>
-      <button onClick={onClickPrevHandler} disabled={page < 2 ? true : false}>
-        Prev Page
-      </button>
-      <span>{page}</span>
-      <button onClick={onClickNexthandler}>Next Page</button>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Button
+          onClick={onClickPrevHandler}
+          disabled={page < 2 || isLoading ? true : false}
+        >
+          Prev Page
+        </Button>
+        <Typography variant="h5" component="span" mr={1} ml={1}>
+          {page}
+        </Typography>
+        <Button
+          onClick={onClickNexthandler}
+          disabled={isLoading ? true : false}
+        >
+          Next Page
+        </Button>
+      </Box>
     </>
   );
 };

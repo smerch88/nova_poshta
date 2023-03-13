@@ -26,13 +26,11 @@ export const DepartmentsSearchForm = () => {
 
   useEffect(() => {
     setPage(currentPage);
-    formik.submitForm();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   const formik = useFormik({
     initialValues: {
-      query: '',
+      query: 'київ',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
@@ -52,6 +50,11 @@ export const DepartmentsSearchForm = () => {
     },
   });
 
+  useEffect(() => {
+    formik.submitForm();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
+
   return (
     <>
       <Box
@@ -60,6 +63,7 @@ export const DepartmentsSearchForm = () => {
         sx={{
           gap: 1,
         }}
+        mt={2}
       >
         <TextField
           mb={1}

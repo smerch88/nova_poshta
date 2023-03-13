@@ -1,3 +1,5 @@
+import { List, ListItem, Typography } from '@mui/material';
+
 import { useSelector } from 'react-redux';
 
 import {
@@ -14,14 +16,14 @@ export const DepartmentsList = () => {
     <>
       {error && `Something went wrong: ${error}`}
       {info && info.totalCount === 0 ? 'Sorry, there are no departments' : null}
-      <ul>
+      <List>
         {data &&
           data.map(department => (
-            <li key={department.SiteKey}>
-              <p>{department.Description}</p>
-            </li>
+            <ListItem key={department.SiteKey}>
+              <Typography>{department.Description}</Typography>
+            </ListItem>
           ))}
-      </ul>
+      </List>
     </>
   );
 };
