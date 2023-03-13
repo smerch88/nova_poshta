@@ -10,7 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { departmentsReducer } from './departments/repos-slice';
+import { departmentsReducer } from './departments/departments-slice';
 
 const persistConfig = {
   key: 'repos',
