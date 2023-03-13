@@ -1,9 +1,12 @@
-/* eslint-disable no-unused-vars */
+import { useState, useEffect } from 'react';
 import { Box, Button, CircularProgress, TextField } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getIsLoading } from 'redux/departments/departments-selectors';
+import {
+  getIsLoading,
+  getPageNumber,
+} from 'redux/departments/departments-selectors';
 import { fetchDepartments } from 'redux/departments/departments-operations';
 
 import { useFormik } from 'formik';
@@ -17,6 +20,15 @@ export const DepartmentsSearchForm = () => {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(getIsLoading);
+  const currentPage = useSelector(getPageNumber);
+
+  const [page, setPage] = useState(currentPage);
+
+  useEffect(() => {
+    setPage(currentPage);
+    formik.submitForm();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   const formik = useFormik({
     initialValues: {
@@ -30,7 +42,7 @@ export const DepartmentsSearchForm = () => {
         calledMethod: 'getWarehouses',
         methodProperties: {
           CityName: values.query,
-          Page: '1',
+          Page: page,
           Limit: '50',
           Language: 'UA',
         },
