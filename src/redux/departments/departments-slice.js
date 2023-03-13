@@ -3,6 +3,7 @@ import { fetchDepartments } from './departments-operations';
 
 const initialState = {
   departments: [],
+  page: '',
   isLoading: false,
   error: null,
 };
@@ -10,6 +11,11 @@ const initialState = {
 const departmentsSlice = createSlice({
   name: 'departments',
   initialState: initialState,
+  reducers: {
+    setPageNumber: (state, action) => {
+      state.page = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchDepartments.pending, state => {
@@ -26,5 +32,7 @@ const departmentsSlice = createSlice({
       });
   },
 });
+
+export const { setPageNumber } = departmentsSlice.actions;
 
 export const departmentsReducer = departmentsSlice.reducer;
