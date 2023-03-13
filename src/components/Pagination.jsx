@@ -1,9 +1,10 @@
-import { Button, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 import { useEffect, useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { getIsLoading } from 'redux/departments/departments-selectors';
 import { setPageNumber } from 'redux/departments/departments-slice';
 
 export const Pagination = () => {
@@ -18,7 +19,7 @@ export const Pagination = () => {
     setPage(page + 1);
   };
 
-  console.log(page);
+  const isLoading = useSelector(getIsLoading);
 
   useEffect(() => {
     dispatch(setPageNumber(page));
@@ -27,13 +28,23 @@ export const Pagination = () => {
 
   return (
     <>
-      <Button onClick={onClickPrevHandler} disabled={page < 2 ? true : false}>
-        Prev Page
-      </Button>
-      <Typography component="span" mr={1} ml={1}>
-        {page}
-      </Typography>
-      <Button onClick={onClickNexthandler}>Next Page</Button>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Button
+          onClick={onClickPrevHandler}
+          disabled={page < 2 || isLoading ? true : false}
+        >
+          Prev Page
+        </Button>
+        <Typography variant="h5" component="span" mr={1} ml={1}>
+          {page}
+        </Typography>
+        <Button
+          onClick={onClickNexthandler}
+          disabled={isLoading ? true : false}
+        >
+          Next Page
+        </Button>
+      </Box>
     </>
   );
 };

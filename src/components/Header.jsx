@@ -64,7 +64,7 @@ export const Header = () => {
               component="div"
               sx={{ flexGrow: 1, marginLeft: '40px' }}
             >
-              TTN Nova Poshta
+              Nova Poshta Helper
             </Typography>
             <IconButton
               edge="start"

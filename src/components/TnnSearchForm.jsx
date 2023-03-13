@@ -66,6 +66,7 @@ export const TnnSearchForm = () => {
       <Box
         component="form"
         onSubmit={formik.handleSubmit}
+        mt={2}
         sx={{
           gap: 1,
         }}
