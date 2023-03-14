@@ -44,6 +44,7 @@ export const PaginationComponent = () => {
         display: 'flex',
         justifyContent: 'center',
       }}
+      mb={2}
     >
       <Pagination
         count={numberOfPages}
