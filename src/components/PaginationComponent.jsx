@@ -38,6 +38,9 @@ export const PaginationComponent = () => {
     dispatch(setPageNumber(page));
   }, [page, dispatch]);
 
+  if (numberOfPages < 2) {
+    return null;
+  }
   return (
     <Box
       sx={{

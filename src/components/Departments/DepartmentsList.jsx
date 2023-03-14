@@ -1,7 +1,8 @@
 import { List, ListItem, Skeleton, Typography } from '@mui/material';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Link as LinkReact } from '@mui/material';
 
 import { useSelector } from 'react-redux';
-
 import {
   getDepartments,
   getError,
@@ -20,6 +21,12 @@ export const DepartmentsList = () => {
       {error && `Something went wrong: ${error}`}
       {info && info.totalCount === 0 ? 'Sorry, there are no departments' : null}
 
+      {info && (
+        <Typography variant="subtitle1" color="textSecondary" mt={2}>
+          Знайдено: {info.totalCount}
+        </Typography>
+      )}
+
       <List>
         {data &&
           data.map(department => (
@@ -27,6 +34,16 @@ export const DepartmentsList = () => {
               <Typography width="100%">
                 {isLoading ? <Skeleton width="100%" /> : department.Description}
               </Typography>
+              <LinkReact
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  department.Description
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ color: 'inherit', marginRight: { md: '40px' } }}
+              >
+                <LocationOnIcon />
+              </LinkReact>
             </ListItem>
           ))}
       </List>
