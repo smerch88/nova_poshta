@@ -89,7 +89,7 @@ export const TnnSearchForm = () => {
           disabled={isLoading}
           type="submit"
         >
-          {isLoading ? <CircularProgress size={24} /> : 'Шукати'}
+          {isLoading ? <CircularProgress size={25} /> : 'Шукати'}
         </Button>
       </Box>
     </>

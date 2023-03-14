@@ -42,6 +42,7 @@ export const TnnList = () => {
   };
 
   const onTnnDeleteClickHandler = event => {
+    dispatch(setQueryTnn(''));
     dispatch(deleteQueryTnn(event.target.dataset.tnn));
   };
   const onAllTnnDeleteClickHandler = event => {
