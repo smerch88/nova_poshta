@@ -1,4 +1,4 @@
-import { lazy, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -7,6 +7,9 @@ import { Layout } from './Layout';
 import { darkTheme, lightTheme } from 'styles/theme';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const DepartmentsPage = lazy(() => import('../pages/Departments/Departments'));
 const TnnPage = lazy(() => import('../pages/Tnn/Tnn'));
@@ -22,7 +25,15 @@ export const App = () => {
     const newTheme = !isDarkTheme;
     setIsDarkTheme(newTheme);
     localStorage.setItem('isDarkTheme', JSON.stringify(newTheme));
+    window.scrollBy(0, 1);
+    window.scrollBy(0, -1);
   };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+    });
+  }, []);
 
   return (
     <>

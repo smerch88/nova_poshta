@@ -8,6 +8,7 @@ import {
   Toolbar,
   Box,
   Button,
+  Zoom,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -46,75 +47,80 @@ export const Header = ({ toggleTheme }) => {
     <>
       <AppBar position="static">
         <Container>
-          <Toolbar>
-            <LocalShippingIcon sx={{ display: 'flex', mr: 1 }} />
-            <Typography
-              variant="h6"
-              noWrap
-              component={Link}
-              to="/"
-              sx={{
-                mr: 2,
-                display: 'flex',
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                flexGrow: 1,
-              }}
-            >
-              Nova
-            </Typography>
-            <Box
-              sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', gap: 10 } }}
-            >
-              {pages.map(({ id, title, link }) => (
-                <Button
-                  variant="outlined"
-                  key={id}
-                  component={Link}
-                  to={link}
-                  sx={{
-                    my: 2,
-                    color: 'white',
-                    borderColor: 'white',
-                    display: 'block',
-                  }}
-                >
-                  {title}
-                </Button>
-              ))}
-            </Box>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleGithubiconClick}
-            >
-              <GitHubIcon />
-            </IconButton>
-            <IconButton
-              sx={{ ml: 1, mr: 2 }}
-              onClick={toggleTheme}
-              color="inherit"
-            >
-              {theme.palette.mode === 'dark' ? (
-                <Brightness4Icon />
-              ) : (
-                <Brightness7Icon />
-              )}
-            </IconButton>
-            <IconButton
-              sx={{ display: { md: 'none' } }}
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleMenuClick}
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
+          <Zoom in>
+            <Toolbar>
+              <LocalShippingIcon sx={{ display: 'flex', mr: 1 }} />
+              <Typography
+                variant="h6"
+                noWrap
+                component={Link}
+                to="/"
+                sx={{
+                  mr: 2,
+                  display: 'flex',
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                  flexGrow: 1,
+                }}
+              >
+                Nova
+              </Typography>
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: 'none', md: 'flex', gap: 10 },
+                }}
+              >
+                {pages.map(({ id, title, link }) => (
+                  <Button
+                    variant="outlined"
+                    key={id}
+                    component={Link}
+                    to={link}
+                    sx={{
+                      my: 2,
+                      color: 'white',
+                      borderColor: 'white',
+                      display: 'block',
+                    }}
+                  >
+                    {title}
+                  </Button>
+                ))}
+              </Box>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={handleGithubiconClick}
+              >
+                <GitHubIcon />
+              </IconButton>
+              <IconButton
+                sx={{ ml: 1, mr: 2 }}
+                onClick={toggleTheme}
+                color="inherit"
+              >
+                {theme.palette.mode === 'dark' ? (
+                  <Brightness4Icon />
+                ) : (
+                  <Brightness7Icon />
+                )}
+              </IconButton>
+              <IconButton
+                sx={{ display: { md: 'none' } }}
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={handleMenuClick}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Toolbar>
+          </Zoom>
         </Container>
       </AppBar>
       <Menu

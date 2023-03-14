@@ -30,7 +30,7 @@ export const DepartmentsList = () => {
       <List>
         {data &&
           data.map(department => (
-            <ListItem key={department.SiteKey}>
+            <ListItem key={department.SiteKey} data-aos="zoom-in">
               <Typography width="100%">
                 {isLoading ? <Skeleton width="100%" /> : department.Description}
               </Typography>
