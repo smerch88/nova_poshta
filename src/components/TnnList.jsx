@@ -8,6 +8,7 @@ import {
   Grid,
   List,
   ListItem,
+  Skeleton,
   Typography,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,7 +24,6 @@ import {
   deleteQueryTnn,
   setQueryTnn,
 } from 'redux/tnn/tnn-slice';
-import { SkeletonCard } from './SkeletonCard';
 
 export const TnnList = () => {
   const tnnData = useSelector(getTnn);
@@ -53,35 +53,43 @@ export const TnnList = () => {
       {error && `Something went wrong: ${error}`}
       {errors && errors[0]}
       <List>
-        {isLoading ? (
-          <SkeletonCard />
-        ) : (
-          !error &&
+        {!error &&
           data &&
           data.map(document => (
             <ListItem
               key={document.Number}
               sx={{
                 width: '100%',
-                height: { xs: 340, sm: 220, md: 152, lg: 160, xl: 160 },
               }}
             >
               <Card sx={{ width: '100%' }}>
                 <CardContent>
-                  <Typography>Статус доставки: {document.Status}</Typography>
+                  {isLoading ? (
+                    <Skeleton />
+                  ) : (
+                    <Typography>Статус доставки: {document.Status}</Typography>
+                  )}
                   <Divider />
-                  <Typography>
-                    Відправлено: {document.WarehouseSender}
-                  </Typography>
+                  {isLoading ? (
+                    <Skeleton />
+                  ) : (
+                    <Typography>
+                      Відправлено: {document.WarehouseSender}
+                    </Typography>
+                  )}
                   <Divider />
-                  <Typography>
-                    Отримано: {document.WarehouseRecipient}
-                  </Typography>
+                  {isLoading ? (
+                    <Skeleton />
+                  ) : (
+                    <Typography>
+                      Отримано: {document.WarehouseRecipient}
+                    </Typography>
+                  )}
+                  <Divider />
                 </CardContent>
               </Card>
             </ListItem>
-          ))
-        )}
+          ))}
       </List>
       <List>
         <Grid container spacing={2}>
