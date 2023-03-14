@@ -12,12 +12,18 @@ import {
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getTnn, getError, getTnnList } from 'redux/tnn/tnn-selectors';
+import {
+  getTnn,
+  getError,
+  getTnnList,
+  getIsLoading,
+} from 'redux/tnn/tnn-selectors';
 import {
   deleteAllSavedTnn,
   deleteQueryTnn,
   setQueryTnn,
 } from 'redux/tnn/tnn-slice';
+import { SkeletonCard } from './SkeletonCard';
 
 export const TnnList = () => {
   const tnnData = useSelector(getTnn);
@@ -26,6 +32,7 @@ export const TnnList = () => {
   console.log(tnnListData);
 
   const error = useSelector(getError);
+  const isLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
 
   const { data, errors } = tnnData;
@@ -46,7 +53,10 @@ export const TnnList = () => {
       {error && `Something went wrong: ${error}`}
       {errors && errors[0]}
       <List>
-        {!error &&
+        {isLoading ? (
+          <SkeletonCard />
+        ) : (
+          !error &&
           data &&
           data.map(document => (
             <ListItem
@@ -70,7 +80,8 @@ export const TnnList = () => {
                 </CardContent>
               </Card>
             </ListItem>
-          ))}
+          ))
+        )}
       </List>
       <List>
         <Grid container spacing={2}>
