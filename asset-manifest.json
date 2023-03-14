@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.js": "/nova_poshta/static/js/main.baeb0a2d.js",
-    "static/js/580.34ee4148.chunk.js": "/nova_poshta/static/js/580.34ee4148.chunk.js",
-    "static/js/409.25a82c90.chunk.js": "/nova_poshta/static/js/409.25a82c90.chunk.js",
+    "main.css": "/nova_poshta/static/css/main.fc0706bd.css",
+    "main.js": "/nova_poshta/static/js/main.0038981e.js",
+    "static/js/580.e0016ef5.chunk.js": "/nova_poshta/static/js/580.e0016ef5.chunk.js",
+    "static/js/409.013954b3.chunk.js": "/nova_poshta/static/js/409.013954b3.chunk.js",
     "static/js/556.16afae46.chunk.js": "/nova_poshta/static/js/556.16afae46.chunk.js",
     "static/js/460.4835e004.chunk.js": "/nova_poshta/static/js/460.4835e004.chunk.js",
     "index.html": "/nova_poshta/index.html",
-    "main.baeb0a2d.js.map": "/nova_poshta/static/js/main.baeb0a2d.js.map",
-    "580.34ee4148.chunk.js.map": "/nova_poshta/static/js/580.34ee4148.chunk.js.map",
-    "409.25a82c90.chunk.js.map": "/nova_poshta/static/js/409.25a82c90.chunk.js.map",
+    "main.fc0706bd.css.map": "/nova_poshta/static/css/main.fc0706bd.css.map",
+    "main.0038981e.js.map": "/nova_poshta/static/js/main.0038981e.js.map",
+    "580.e0016ef5.chunk.js.map": "/nova_poshta/static/js/580.e0016ef5.chunk.js.map",
+    "409.013954b3.chunk.js.map": "/nova_poshta/static/js/409.013954b3.chunk.js.map",
     "556.16afae46.chunk.js.map": "/nova_poshta/static/js/556.16afae46.chunk.js.map",
     "460.4835e004.chunk.js.map": "/nova_poshta/static/js/460.4835e004.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.baeb0a2d.js"
+    "static/css/main.fc0706bd.css",
+    "static/js/main.0038981e.js"
   ]
 }
