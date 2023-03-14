@@ -19,7 +19,10 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 const validationSchema = yup.object({
-  query: yup.string('Введіть назву для пошуку').required(`Назва обов'язкова`),
+  query: yup
+    .string('Введіть назву для пошуку')
+    .required(`Назва обов'язкова...`),
+  warehouseId: yup.number('Введіть номер відділення...'),
 });
 
 export const DepartmentsSearchForm = () => {
@@ -38,6 +41,7 @@ export const DepartmentsSearchForm = () => {
   const formik = useFormik({
     initialValues: {
       query: 'київ',
+      warehouseId: '41',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
@@ -50,6 +54,7 @@ export const DepartmentsSearchForm = () => {
           Page: page,
           Limit: '50',
           Language: 'UA',
+          WarehouseId: values.warehouseId,
         },
       };
 
@@ -81,6 +86,19 @@ export const DepartmentsSearchForm = () => {
           onChange={formik.handleChange}
           error={formik.touched.query && Boolean(formik.errors.query)}
           helperText={formik.touched.query && formik.errors.query}
+          sx={{ marginBottom: theme.spacing(2) }}
+        />
+        <TextField
+          fullWidth
+          id="warehouseId"
+          name="warehouseId"
+          label="Введіть номер відділення"
+          value={formik.values.warehouseId}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.warehouseId && Boolean(formik.errors.warehouseId)
+          }
+          helperText={formik.touched.warehouseId && formik.errors.warehouseId}
           sx={{ marginBottom: theme.spacing(2) }}
         />
         <Button
