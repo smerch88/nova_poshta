@@ -22,7 +22,6 @@ const tnnSlice = createSlice({
       state.queryTnn = action.payload;
     },
     deleteQueryTnn: (state, action) => {
-      state.queryTnn = '';
       state.tnnList = state.tnnList.filter(tnn => tnn !== action.payload);
     },
     deleteAllSavedTnn: state => {

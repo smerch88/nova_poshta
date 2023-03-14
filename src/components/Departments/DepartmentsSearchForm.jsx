@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Box, Button, CircularProgress, TextField } from '@mui/material';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  TextField,
+  useTheme,
+} from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -18,6 +24,7 @@ const validationSchema = yup.object({
 
 export const DepartmentsSearchForm = () => {
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   const isLoading = useSelector(getIsLoading);
   const currentPage = useSelector(getPageNumber);
@@ -66,7 +73,6 @@ export const DepartmentsSearchForm = () => {
         mt={2}
       >
         <TextField
-          mb={1}
           fullWidth
           id="query"
           name="query"
@@ -75,6 +81,7 @@ export const DepartmentsSearchForm = () => {
           onChange={formik.handleChange}
           error={formik.touched.query && Boolean(formik.errors.query)}
           helperText={formik.touched.query && formik.errors.query}
+          sx={{ marginBottom: theme.spacing(2) }}
         />
         <Button
           fullWidth
@@ -84,7 +91,7 @@ export const DepartmentsSearchForm = () => {
           disabled={isLoading}
           type="submit"
         >
-          {isLoading ? <CircularProgress size={24} /> : 'Шукати'}
+          {isLoading ? <CircularProgress size={25} /> : 'Шукати'}
         </Button>
       </Box>
     </>

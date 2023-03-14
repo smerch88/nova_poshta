@@ -1,8 +1,8 @@
 import { Container } from '@mui/material';
 
-import { DepartmentsList } from 'components/DepartmentsList';
-import { DepartmentsSearchForm } from 'components/DepartmentsSearchForm';
-import { Pagination } from 'components/Pagination';
+import { DepartmentsList } from 'components/Departments/DepartmentsList';
+import { DepartmentsSearchForm } from 'components/Departments/DepartmentsSearchForm';
+import { PaginationComponent } from 'components/PaginationComponent';
 
 const Departments = () => {
   return (
@@ -10,7 +10,7 @@ const Departments = () => {
       <Container>
         <DepartmentsSearchForm />
         <DepartmentsList />
-        <Pagination />
+        <PaginationComponent />
       </Container>
     </>
   );

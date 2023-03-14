@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const novaPoshtaApi = axios.create({
   baseURL: 'https://api.novaposhta.ua/v2.0/json/',
@@ -12,7 +13,7 @@ export const getData = async body => {
     }
     return data;
   } catch (error) {
-    alert(error.message);
+    Notify.failure(error.message);
     return error;
   }
 };
