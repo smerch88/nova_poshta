@@ -1,4 +1,10 @@
-import { Box, Button, CircularProgress, TextField } from '@mui/material';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  TextField,
+  useTheme,
+} from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -21,6 +27,7 @@ const validationSchema = yup.object({
 
 export const TnnSearchForm = () => {
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   const queryTnn = useSelector(getQueryTnn);
   const isLoading = useSelector(getIsLoading);
@@ -71,7 +78,6 @@ export const TnnSearchForm = () => {
         }}
       >
         <TextField
-          mb={1}
           fullWidth
           id="tnn"
           name="tnn"
@@ -80,6 +86,7 @@ export const TnnSearchForm = () => {
           onChange={formik.handleChange}
           error={formik.touched.tnn && Boolean(formik.errors.tnn)}
           helperText={formik.touched.tnn && formik.errors.tnn}
+          sx={{ marginBottom: theme.spacing(2) }}
         />
         <Button
           fullWidth
