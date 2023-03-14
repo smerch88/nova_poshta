@@ -24,12 +24,12 @@ import {
   deleteQueryTnn,
   setQueryTnn,
 } from 'redux/tnn/tnn-slice';
+import SwipeableEdgeDrawer from './SwipeableEdgeDrawer';
+import { TtnSavedCards } from './TtnSavedCards';
 
 export const TnnList = () => {
   const tnnData = useSelector(getTnn);
   const tnnListData = useSelector(getTnnList);
-
-  console.log(tnnListData);
 
   const error = useSelector(getError);
   const isLoading = useSelector(getIsLoading);
@@ -92,45 +92,28 @@ export const TnnList = () => {
             </ListItem>
           ))}
       </List>
+      <Typography ml={2}> Історія пошуку: </Typography>
+      <SwipeableEdgeDrawer
+        tnnListData={tnnListData}
+        onTnnListClickHandler={onTnnListClickHandler}
+        onTnnDeleteClickHandler={onTnnDeleteClickHandler}
+      />
       <List>
         <Grid container spacing={2}>
           {tnnListData &&
-            tnnListData.map(tnn => (
-              <Grid item xs={12} sm={6} md={4} key={tnn} data-tnn={tnn}>
-                <ListItem sx={{ minWidth: 275 }}>
-                  <Card sx={{ width: '100%' }}>
-                    <CardActionArea>
-                      <CardContent
-                        onClick={onTnnListClickHandler}
-                        data-tnn={tnn}
-                      >
-                        <Typography
-                          onClick={onTnnListClickHandler}
-                          sx={{ textAlign: 'center' }}
-                          data-tnn={tnn}
-                        >
-                          {tnn}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button
-                        fullWidth
-                        data-tnn={tnn}
-                        onClick={onTnnDeleteClickHandler}
-                      >
-                        видалити
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </ListItem>
-              </Grid>
+            tnnListData.map(ttn => (
+              <TtnSavedCards
+                key={ttn}
+                ttn={ttn}
+                onTnnListClickHandler={onTnnListClickHandler}
+                onTnnDeleteClickHandler={onTnnDeleteClickHandler}
+              />
             ))}
         </Grid>
       </List>
       {tnnListData.length !== 0 && (
         <Button onClick={onAllTnnDeleteClickHandler} fullWidth>
-          видалити все
+          очистити історію
         </Button>
       )}
     </>
