@@ -4,7 +4,7 @@ import { fetchTnn } from './tnn-operations';
 const initialState = {
   tnn: [],
   tnnList: [],
-  queryTnn: '',
+  queryTnn: '20450676599510',
   isLoading: false,
   error: null,
 };
