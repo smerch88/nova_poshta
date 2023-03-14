@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 
-import { TnnList } from 'components/TnnList';
-import { TnnSearchForm } from 'components/TnnSearchForm';
+import { TnnList } from 'components/TTN/TnnList';
+import { TnnSearchForm } from 'components/TTN/TnnSearchForm';
 
 const Tnn = () => {
   return (
