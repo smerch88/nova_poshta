@@ -12,12 +12,18 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+
+import { useTheme } from '@mui/material';
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Header = () => {
+export const Header = ({ toggleTheme }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const theme = useTheme();
 
   const pages = [
     { id: '1', title: 'Пошук за ТТН', link: '/' },
@@ -87,6 +93,17 @@ export const Header = () => {
               onClick={handleGithubiconClick}
             >
               <GitHubIcon />
+            </IconButton>
+            <IconButton
+              sx={{ ml: 1, mr: 2 }}
+              onClick={toggleTheme}
+              color="inherit"
+            >
+              {theme.palette.mode === 'dark' ? (
+                <Brightness4Icon />
+              ) : (
+                <Brightness7Icon />
+              )}
             </IconButton>
             <IconButton
               sx={{ display: { md: 'none' } }}
