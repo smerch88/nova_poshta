@@ -3,17 +3,12 @@ import {
   Container,
   IconButton,
   Typography,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
+  Menu,
+  MenuItem,
   Toolbar,
   Box,
   Button,
 } from '@mui/material';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import FindInPageOutlinedIcon from '@mui/icons-material/FindInPageOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
@@ -22,40 +17,24 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const pages = [
     { id: '1', title: 'Пошук за ТТН', link: '/' },
     { id: '2', title: 'Пошук відділень', link: '/departments' },
   ];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleMenuClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
   };
 
   const handleGithubiconClick = () => {
     window.open('https://github.com/smerch88', '_blank');
   };
-
-  const menu = (
-    <List>
-      <ListItem disablePadding>
-        <ListItemButton component={Link} to="/">
-          <HomeOutlinedIcon sx={{ marginRight: '40px' }} />
-          <ListItemText primary="Пошук за ТТН" sx={{ marginRight: '40px' }} />
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding>
-        <ListItemButton component={Link} to="/departments">
-          <FindInPageOutlinedIcon sx={{ marginRight: '40px' }} />
-          <ListItemText
-            primary="Пошук відділень"
-            sx={{ marginRight: '40px' }}
-          />
-        </ListItemButton>
-      </ListItem>
-    </List>
-  );
 
   return (
     <>
@@ -114,21 +93,29 @@ export const Header = () => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              onClick={toggleMenu}
+              onClick={handleMenuClick}
             >
               <MenuIcon />
             </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
-      <Drawer
-        anchor="top"
-        open={isMenuOpen}
-        onClose={toggleMenu}
-        sx={{ height: '100%' }}
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
       >
-        {menu}
-      </Drawer>
+        {pages.map(({ id, title, link }) => (
+          <MenuItem
+            key={id}
+            component={Link}
+            to={link}
+            onClick={handleMenuClose}
+          >
+            {title}
+          </MenuItem>
+        ))}
+      </Menu>
     </>
   );
 };
