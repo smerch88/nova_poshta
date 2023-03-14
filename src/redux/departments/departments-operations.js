@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getData } from 'services/api';
+import { getDeps } from 'services/api';
 
 export const fetchDepartments = createAsyncThunk(
   'departments/getDepartments',
   async (body, thunkApi) => {
     try {
-      const res = await getData(body);
+      const res = await getDeps(body);
 
       if (res.data.length === '0') {
         throw new Error(`Failed, no results.`);

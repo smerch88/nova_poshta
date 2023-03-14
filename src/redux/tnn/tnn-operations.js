@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getData } from 'services/api';
+import { getTTN } from 'services/api';
 
 export const fetchTnn = createAsyncThunk(
   'tnn/getTnn',
   async (body, thunkApi) => {
     try {
-      const res = await getData(body);
+      const res = await getTTN(body);
 
       if (res.data.length === '0') {
         throw new Error(`Failed, no results.`);
