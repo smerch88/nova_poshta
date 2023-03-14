@@ -62,42 +62,40 @@ export const Header = () => {
       <AppBar position="static">
         <Container>
           <Toolbar>
-            <LocalShippingIcon
-              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-            />
-            <IconButton
-              sx={{ display: { md: 'none' } }}
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleMenu}
-            >
-              <MenuIcon />
-            </IconButton>
+            <LocalShippingIcon sx={{ display: 'flex', mr: 1 }} />
             <Typography
               variant="h6"
               noWrap
               component={Link}
-              href="/"
+              to="/"
               sx={{
                 mr: 2,
-                display: { xs: 'none', md: 'flex' },
+                display: 'flex',
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
+                flexGrow: 1,
               }}
             >
               Nova
             </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Box
+              sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', gap: 10 } }}
+            >
               {pages.map(({ id, title, link }) => (
                 <Button
+                  variant="outlined"
                   key={id}
                   component={Link}
                   to={link}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{
+                    my: 2,
+                    color: 'white',
+                    borderColor: 'white',
+                    display: 'block',
+                  }}
                 >
                   {title}
                 </Button>
@@ -111,10 +109,24 @@ export const Header = () => {
             >
               <GitHubIcon />
             </IconButton>
+            <IconButton
+              sx={{ display: { md: 'none' } }}
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleMenu}
+            >
+              <MenuIcon />
+            </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
-      <Drawer anchor="top" open={isMenuOpen} onClose={toggleMenu}>
+      <Drawer
+        anchor="top"
+        open={isMenuOpen}
+        onClose={toggleMenu}
+        sx={{ height: '100%' }}
+      >
         {menu}
       </Drawer>
     </>

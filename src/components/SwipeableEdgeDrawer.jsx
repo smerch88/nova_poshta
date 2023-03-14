@@ -7,14 +7,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  Grid,
-  ListItem,
-} from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import { TtnSavedCards } from './TtnSavedCards';
 
 const drawerBleeding = 56;
@@ -58,6 +51,13 @@ function SwipeableEdgeDrawer(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  const isMobile = useMediaQuery(theme => theme.breakpoints.down('md'));
+
+  if (!isMobile) {
+    // Don't render the drawer on non-mobile devices
+    return null;
+  }
+
   return (
     <Root>
       <CssBaseline />
@@ -69,8 +69,10 @@ function SwipeableEdgeDrawer(props) {
           },
         }}
       />
-      <Box sx={{ textAlign: 'center', pt: 1 }}>
-        <Button onClick={toggleDrawer(true)}>Open</Button>
+      <Box sx={{ textAlign: 'center', display: { md: 'none' } }}>
+        <Button fullWidth onClick={toggleDrawer(true)}>
+          Відкрити історію
+        </Button>
       </Box>
       <SwipeableDrawer
         container={container}

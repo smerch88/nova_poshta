@@ -1,8 +1,6 @@
 import {
   Button,
   Card,
-  CardActionArea,
-  CardActions,
   CardContent,
   Divider,
   Grid,
@@ -98,7 +96,7 @@ export const TnnList = () => {
         onTnnListClickHandler={onTnnListClickHandler}
         onTnnDeleteClickHandler={onTnnDeleteClickHandler}
       />
-      <List>
+      <List sx={{ display: { xs: 'none', md: 'flex' } }}>
         <Grid container spacing={2}>
           {tnnListData &&
             tnnListData.map(ttn => (
@@ -112,7 +110,7 @@ export const TnnList = () => {
         </Grid>
       </List>
       {tnnListData.length !== 0 && (
-        <Button onClick={onAllTnnDeleteClickHandler} fullWidth>
+        <Button onClick={onAllTnnDeleteClickHandler} fullWidth mb={8}>
           очистити історію
         </Button>
       )}
