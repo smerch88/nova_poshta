@@ -7,7 +7,7 @@ export const fetchDepartments = createAsyncThunk(
     try {
       const res = await getData(body);
 
-      if (res.data.length === '0') {
+      if (res.data?.length === '0') {
         throw new Error(`Failed, no results.`);
       }
 

@@ -99,7 +99,7 @@ function SwipeableEdgeDrawer(props) {
         >
           <Puller />
           <Typography sx={{ p: 2, color: 'text.secondary' }}>
-            Результатів: {tnnListData.length}
+            Результатів: {tnnListData?.length}
           </Typography>
         </StyledBox>
         <StyledBox

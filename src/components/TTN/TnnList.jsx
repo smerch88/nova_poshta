@@ -98,7 +98,7 @@ export const TnnList = () => {
                       ) : (
                         <Typography>
                           Статус доставки:{' '}
-                          {document.Status.length
+                          {document.Status?.length
                             ? document.Status
                             : 'дані відсутні...'}
                         </Typography>
@@ -108,7 +108,7 @@ export const TnnList = () => {
                       ) : (
                         <Typography variant="body2" color="grey" mb={1}>
                           Дата доставки:{' '}
-                          {document.TrackingUpdateDate.length
+                          {document.TrackingUpdateDate?.length
                             ? document.TrackingUpdateDate
                             : 'дані відсутні...'}
                         </Typography>
@@ -135,7 +135,7 @@ export const TnnList = () => {
                       ) : (
                         <Typography mt={1}>
                           Відправлено:{' '}
-                          {document.WarehouseSender.length
+                          {document.WarehouseSender?.length
                             ? document.WarehouseSender
                             : 'дані відсутні...'}
                         </Typography>
@@ -145,7 +145,7 @@ export const TnnList = () => {
                       ) : (
                         <Typography variant="body2" color="grey" mb={1}>
                           Дата створення:{' '}
-                          {document.DateCreated.length
+                          {document.DateCreated?.length
                             ? document.DateCreated
                             : 'дані відсутні...'}
                         </Typography>
@@ -172,7 +172,7 @@ export const TnnList = () => {
                       ) : (
                         <Typography mt={1}>
                           Отримано:{' '}
-                          {document.WarehouseRecipient.length
+                          {document.WarehouseRecipient?.length
                             ? document.WarehouseRecipient
                             : 'дані відсутні...'}
                         </Typography>
@@ -182,7 +182,7 @@ export const TnnList = () => {
                       ) : (
                         <Typography variant="body2" color="grey">
                           Дата прибуття:{' '}
-                          {document.ActualDeliveryDate.length
+                          {document.ActualDeliveryDate?.length
                             ? document.ActualDeliveryDate
                             : 'дані відсутні...'}
                         </Typography>
@@ -214,7 +214,7 @@ export const TnnList = () => {
             ))}
         </Grid>
       </List>
-      {tnnListData.length !== 0 && (
+      {tnnListData?.length !== 0 && (
         <Button onClick={onAllTnnDeleteClickHandler} fullWidth mb={8}>
           очистити історію
         </Button>
