@@ -21,7 +21,11 @@ import * as yup from 'yup';
 const validationSchema = yup.object({
   query: yup
     .string('Введіть назву для пошуку')
-    .required(`Назва обов'язкова...`),
+    .matches(
+      /^[\u0400-\u04FF\s]+$/,
+      'Підтримується пошук тільки українською мовою...'
+    )
+    .required(`Поле "Назва" є обов'язковим`),
   warehouseId: yup.number('Введіть номер відділення...'),
 });
 
@@ -41,7 +45,7 @@ export const DepartmentsSearchForm = () => {
   const formik = useFormik({
     initialValues: {
       query: 'київ',
-      warehouseId: '41',
+      warehouseId: '',
     },
     validationSchema: validationSchema,
     onSubmit: values => {

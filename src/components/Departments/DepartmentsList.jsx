@@ -1,4 +1,4 @@
-import { List, ListItem, Skeleton, Typography } from '@mui/material';
+import { List, ListItem, Skeleton, Typography, Zoom } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Link as LinkReact } from '@mui/material';
 
@@ -30,21 +30,27 @@ export const DepartmentsList = () => {
       <List>
         {data &&
           data.map(department => (
-            <ListItem key={department.SiteKey} data-aos="zoom-in">
-              <Typography width="100%">
-                {isLoading ? <Skeleton width="100%" /> : department.Description}
-              </Typography>
-              <LinkReact
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  department.Description
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{ color: 'inherit', marginRight: { md: '40px' } }}
-              >
-                <LocationOnIcon />
-              </LinkReact>
-            </ListItem>
+            <Zoom in>
+              <ListItem key={department.SiteKey}>
+                <Typography width="100%">
+                  {isLoading ? (
+                    <Skeleton width="100%" />
+                  ) : (
+                    department.Description
+                  )}
+                </Typography>
+                <LinkReact
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    department.Description
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ color: 'inherit', marginRight: { md: '40px' } }}
+                >
+                  <LocationOnIcon />
+                </LinkReact>
+              </ListItem>
+            </Zoom>
           ))}
       </List>
     </>

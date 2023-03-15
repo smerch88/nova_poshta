@@ -8,8 +8,10 @@ import { darkTheme, lightTheme } from 'styles/theme';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import { I18nextProvider } from 'react-i18next';
+import { languageSettings } from 'locales/translations';
 
 const DepartmentsPage = lazy(() => import('../pages/Departments/Departments'));
 const TnnPage = lazy(() => import('../pages/Tnn/Tnn'));
@@ -29,23 +31,21 @@ export const App = () => {
     window.scrollBy(0, -1);
   };
 
-  useEffect(() => {
-    AOS.init({
-      duration: 500,
-    });
-  }, []);
+  i18next.use(initReactI18next).init(languageSettings);
 
   return (
     <>
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-        <CssBaseline />
-        <Routes>
-          <Route path="/" element={<Layout toggleTheme={toggleTheme} />}>
-            <Route index element={<TnnPage />} />
-            <Route path="departments" element={<DepartmentsPage />} />
-          </Route>
-        </Routes>
-      </ThemeProvider>
+      <I18nextProvider i18n={i18next}>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+          <CssBaseline />
+          <Routes>
+            <Route path="/" element={<Layout toggleTheme={toggleTheme} />}>
+              <Route index element={<TnnPage />} />
+              <Route path="departments" element={<DepartmentsPage />} />
+            </Route>
+          </Routes>
+        </ThemeProvider>
+      </I18nextProvider>
     </>
   );
 };

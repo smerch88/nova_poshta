@@ -9,6 +9,10 @@ import {
   Box,
   Button,
   Zoom,
+  Select,
+  Icon,
+  InputLabel,
+  FormControl,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -21,15 +25,24 @@ import { useTheme } from '@mui/material';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
+
+import { UA, GB } from 'country-flag-icons/react/3x2';
+
 export const Header = ({ toggleTheme }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const { t } = useTranslation();
 
   const theme = useTheme();
 
   const pages = [
-    { id: '1', title: 'Пошук за ТТН', link: '/' },
-    { id: '2', title: 'Пошук відділень', link: '/departments' },
+    { id: '1', title: `${t('ttn')}`, link: '/' },
+    { id: '2', title: `${t('departments')}`, link: '/departments' },
   ];
+
+  const [selectedLanguage, setSelectedLanguage] = useState('ua');
 
   const handleMenuClick = event => {
     setAnchorEl(event.currentTarget);
@@ -41,6 +54,11 @@ export const Header = ({ toggleTheme }) => {
 
   const handleGithubiconClick = () => {
     window.open('https://github.com/smerch88', '_blank');
+  };
+
+  const handleLanguageChange = lang => {
+    i18next.changeLanguage(lang);
+    setSelectedLanguage(lang);
   };
 
   return (
@@ -99,6 +117,25 @@ export const Header = ({ toggleTheme }) => {
               >
                 <GitHubIcon />
               </IconButton>
+              <FormControl variant="standard">
+                <Select
+                  value={selectedLanguage}
+                  onChange={event => handleLanguageChange(event.target.value)}
+                  sx={{ ml: 1 }}
+                >
+                  <MenuItem value="en" sx={{ fontSize: '4rem' }}>
+                    <Icon>
+                      <GB title="United States" />
+                    </Icon>
+                  </MenuItem>
+                  <MenuItem value="ua" sx={{ fontSize: '4rem' }} selected>
+                    <Icon>
+                      <UA title="United States" />
+                    </Icon>
+                  </MenuItem>
+                </Select>
+              </FormControl>
+
               <IconButton
                 sx={{ ml: 1, mr: 2 }}
                 onClick={toggleTheme}
