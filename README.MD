@@ -125,3 +125,50 @@ ToolKit, Axios є привітним. Обов'язково подумати п�
     ![departments pagination](./assets/doc/departmentsspec.jpg)
 
 ### Мобільна версія
+
+14. Вигляд додатку з темною темою на мобільному пристрої.
+
+    <img  width='40%' src='./assets/doc/mobiletheme.jpg' alt='mobile theme'>
+
+15. Вигляд опциї вибору мови.
+
+    <img  width='40%' src='./assets/doc/mobiletranslation.jpg' alt='mobile languages'>
+
+16. Вигляд свайп меню.
+
+    <img  width='40%' src='./assets/doc/mobiledrawerweipe.jpg' alt='mobile swipable list'>
+
+Примітка: частина додаткового функціоналу не описана.
+
+## Технічна частина (англійською)
+
+<h3>Installing</h3>
+
+<p>A step by step guide on how to get the development environment running.</p>
+
+<p>Clone repository or get the copy in any other way.</p>
+
+<pre>
+<code>npm i</code>
+<code>npm start</code>
+</pre>
+
+<h2>Built With</h2>
+
+<ul>
+  <li><a href="https://reactjs.org/e">React</a> - The web framework used</li>
+  <li><a href="https://redux.js.org/">Redux</a> - A Predictable State Container for JS Apps</li>
+  <li><a href="https://redux-toolkit.js.org/">Redux Toolkit</a> - Toolset for efficient Redux development</li>
+  <li><a href="https://mui.com/">MUI</a> - MUI is a massive library of UI components designers and developers can use to build React applications. The open-source project follows Google's guidelines for creating components, giving you a customizable library of foundational and advanced UI elements </li>
+  <li><a href="https://axios-http.com/">Axios</a> - Axios is a promised-based HTTP client for JavaScript. It has the ability to make HTTP requests from the browser and handle the transformation of request and response data </li>
+  <li><a href="https://formik.org/">Formik</a> - Formik is a small group of React components and hooks for building forms in React and React Native. It helps with the three most annoying parts: Getting values in and out of form state. Validation and error messages. Handling form submission </li>
+  <li><a href="https://github.com/jquense/yup">Yup</a> - Yup is a JavaScript schema builder for value parsing and validation. Define a schema, transform a value to match, validate the shape of an existing value, or both. Yup schema is extremely expressive and allows modelling complex, interdependent validations, or value transformations. </li>
+  <li><a href="https://www.i18next.com/">i18next</a> - An internationalization-framework written in and for JavaScript. But it's much more than that! i18next goes beyond just providing the standard i18n features such as (plurals, context, interpolation, format). It provides you with a complete solution to localize your product from web to mobile and desktop </li>
+  <li><a href=https://github.com/notiflix/Notiflix/">notiflix</a> - Notiflix is a pure JavaScript library for client-side non-blocking notifications, popup boxes, loading indicators, and more that makes your web projects much better </li>
+</ul>
+
+<h2>Author</h2>
+
+<ul>
+  <li><strong>Frontend Developer</strong> - <a href="https://github.com/smerch88">Smerch88</a></li>
+</ul>
