@@ -42,6 +42,7 @@ export const App = () => {
             <Route path="/" element={<Layout toggleTheme={toggleTheme} />}>
               <Route index element={<TnnPage />} />
               <Route path="departments" element={<DepartmentsPage />} />
+              <Route path="*" element={<TnnPage />} />
             </Route>
           </Routes>
         </ThemeProvider>
