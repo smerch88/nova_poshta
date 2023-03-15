@@ -11,7 +11,6 @@ import {
   Zoom,
   Select,
   Icon,
-  InputLabel,
   FormControl,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';

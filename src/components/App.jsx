@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from 'react';
+import { lazy, useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
