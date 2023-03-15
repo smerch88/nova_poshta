@@ -45,7 +45,7 @@ export const DepartmentsSearchForm = () => {
   const formik = useFormik({
     initialValues: {
       query: 'київ',
-      warehouseId: '41',
+      warehouseId: '',
     },
     validationSchema: validationSchema,
     onSubmit: values => {

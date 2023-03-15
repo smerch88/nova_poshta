@@ -8,9 +8,6 @@ import { darkTheme, lightTheme } from 'styles/theme';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { I18nextProvider } from 'react-i18next';
@@ -33,12 +30,6 @@ export const App = () => {
     window.scrollBy(0, 1);
     window.scrollBy(0, -1);
   };
-
-  useEffect(() => {
-    AOS.init({
-      duration: 500,
-    });
-  }, []);
 
   i18next.use(initReactI18next).init(languageSettings);
 
